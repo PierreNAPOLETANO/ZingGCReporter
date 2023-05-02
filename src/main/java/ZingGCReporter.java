@@ -76,11 +76,8 @@ public class ZingGCReporter extends Thread {
     private ZingGCReporter(String[] args) throws FileNotFoundException {
         this.setName("ZingGCReporter");
         config.parseArgs(args);
-        if (config.logFileName != null) {
-            log = new PrintStream(new FileOutputStream(config.logFileName), false);
-        } else {
-            log = System.out;
-        }
+        log = config.logFileName != null ? new PrintStream(new FileOutputStream(config.logFileName), false) : System.out;
+     
         this.setDaemon(true);
     }
 
